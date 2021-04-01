@@ -9,7 +9,7 @@ VALUES ("VP Sales", 40000, 1),
          ("Software Engineer", 70000, 2), 
          ("Accountant", 80000, 3), 
          ("Lead Lawyer", 90000, 4), 
-         ("Lawyer", 100000, 4); 
+         ("Lawyer", 100000, 4),
         ('VP Human Resources', 110000, 5), 
         ('Human Resource Generalist', 120000, 5); 
 
