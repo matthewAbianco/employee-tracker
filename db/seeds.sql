@@ -20,6 +20,6 @@ VALUES ("Tim", "Burr", 1, null),
         ("Hugh", "Mungus", 4, null),
         ("Ivana", "Humpalot", 5, null),
         ("Biggus", "Dickus", 6, null), 
-        ("Ferris", "Wheel", 7, null); 
+        ("Ferris", "Wheel", 7, null),
         ("Harry", "Sachs", 8, null), 
         ("Oliver", "Closaph", 9, null); 
