@@ -4,10 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node server.js",
-    "migrate": "sqlite3 db/election.db < db/schema.sql",
-    "seed": "sqlite3 db/election.db < db/seeds.sql",
-    "db": "sqlite3 db/election.db"
+    "start": "node index.js",
+    "migrate": "mysql db/work.db < db/schema.sql",
+    "seed": "mysql db/work.db < db/seeds.sql",
+    "db": "mysql db/workDB.db"
   },
   "repository": {
     "type": "git",
