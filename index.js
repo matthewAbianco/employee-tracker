@@ -7,7 +7,7 @@ const connection = mysql.createConnection({
     port: 3306,
     user: 'root',
     password: 'saynope',
-    database: 'employee_DB'
+    database: 'employee_db'
 });
   
 connection.connect(err => 
@@ -24,7 +24,9 @@ const start = () => {
             name: 'choice',
             type: 'list',
             message: 'What would you like to do?',
-            choices: ['View all departments',
+            choices: [
+            'View all departments',
+            'View all roles',
             'View all employees', 
             'Add a department',
             'Add a role',
@@ -41,8 +43,11 @@ const start = () => {
     .then((answer) => {
         switch(answer.choice) {
             case 'View all departments':
-                viewAllDepartments();
+                allDepartments();
                 break;
+            case 'View all roles':
+                allRoles();
+                break;    
             case 'View all employees':
                 viewEmployees();
                 break;
@@ -88,18 +93,25 @@ const start = () => {
 };
 
 
-function viewAllDepartments() {
+ allDepartments = () => {
     connection.query("SELECT * FROM department", function (err, data) {
         console.table(data);
         start();
-    })
-  }
+    });
+  };
 viewEmployees = () => {
-    connection.query("SELECT * FROM ", function (err, data) {
-        console.table(data);
-        start();
+  connection.query("SELECT * FROM employee", function (err, data) {
+      console.table(data);
+      start();
+  })
 }
 
+allRoles = () => {
+    connection.query("SELECT * FROM roles", function (err, data) {
+        console.table(data);
+        start();
+    })
+}
 //    addDepartment();
 
 //    addRole();
@@ -125,4 +137,3 @@ viewEmployees = () => {
 
 
 start();
-
