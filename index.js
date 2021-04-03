@@ -113,7 +113,23 @@ allRoles = () => {
         start();
     })
 }
-//    addDepartment();
+    addDepartment = () => {
+        inquirer.prompt([
+            {
+                type: 'input',
+                name: 'newDept',
+                message: 'What is the name of the new department?'
+            },
+        ]).then(function (res) {
+            connection.query('INSERT INTO department(department_name) VALUES (?)',
+        [res.newDept], 
+         function(err, data) {
+            if (err) throw err;
+            console.table("Successfully Inserted");
+            start();
+        })
+    })
+  }      
 
 //    addRole();
 
