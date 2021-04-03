@@ -36,7 +36,8 @@ const start = () => {
             'View employees by manager',
             'View employees by department',
             'Delete departments, roles and employees',
-            'View the total utilized budget of all department'
+            'View the total utilized budget of all department',
+            'Quit'
           ]
         }
     ])
@@ -84,7 +85,7 @@ const start = () => {
             case 'View total budget of all departments':
                 viewBudget();
                 break;       
-            case 'Exit':
+            case 'Quit':
                 console.log("GoodBye!");
                 connection.end();
                 break;
