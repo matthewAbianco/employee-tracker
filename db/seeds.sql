@@ -26,5 +26,3 @@ VALUES  ("Tim", "Burr", 1, 4),
         
 
 
-INSERT INTO department (names)
-VALUES ("Sales"), ("Engineering"), ("Finance"), ("Legal"),('Human Resources');
