@@ -84,7 +84,7 @@ const start = () => {
             case 'Delete a employee':
                 deleteEmployee();
                 break; 
-            case 'View total budget of all departments':
+            case 'View the total utilized budget of all department':
                 viewBudget();
                 break;       
             case 'Quit':
@@ -259,7 +259,22 @@ viewEmployeesByManager = () => {
   }
 
 
-//     employeeByDepartment()
+employeeByDepartment = () => {
+    inquirer.prompt([
+        {
+            type: "input",
+            name: "department",
+            message: "insert role ID"
+        },
+    ]).then(function(res) {
+        connection.query("SELECT * FROM employee WHERE role_id = ?", 
+        [res.department], function (err, data) {
+            console.table(data);
+            console.log("employees shown by selected role")
+            start();
+        })
+    })
+  }
 
 deleteDepartment = () => {
     inquirer.prompt([
@@ -315,7 +330,12 @@ deleteEmployee = () => {
     })
   }
 
-//     viewBudget()
+viewBudget = () => {
+    connection.query("SELECT SUM(salary) FROM roles JOIN employee ON roles.id = employee.role_id ", function (err, data) {
+        console.table(data);
+        start();
+    });
+  };
 
 
 
