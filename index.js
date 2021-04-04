@@ -81,7 +81,7 @@ const start = () => {
             case 'Delete a job role':
                 deleteJob();
                 break;
-            case 'Delete an employee':
+            case 'Delete a employee':
                 deleteEmployee();
                 break; 
             case 'View total budget of all departments':
@@ -245,17 +245,12 @@ viewEmployeesByManager = () => {
     inquirer.prompt([
         {
             type: "input",
-            name: "id",
-            message: "which employee id would you like to update?"
+            name: "manager",
+            message: "insert manager ID"
         },
-        {
-            type: "number",
-            name: "role_id",
-            message: "enter the new role ID:"
-        }
     ]).then(function(res) {
-        connection.query("SELECT COUNT employee (manager_id) employee SET role_id = ? WHERE id = ?", 
-        [res.role_id, res.id], function (err, data) {
+        connection.query("SELECT * FROM employee WHERE manager_id = ?", 
+        [res.manager], function (err, data) {
             console.table(data);
             console.log("employee successfully updated")
             start();
@@ -266,7 +261,23 @@ viewEmployeesByManager = () => {
 
 //     employeeByDepartment()
 
-//     deleteDepartment();
+deleteDepartment = () => {
+    inquirer.prompt([
+        {
+            type: "input",
+            name: "departmentDelete",
+            message: "which department would you like to delete?"
+        },
+
+    ]).then(function(res) {
+        connection.query("DELETE FROM department WHERE department_name = (?)", 
+        [res.departmentDelete], function (err, data) {
+            console.table(data);
+            console.log("department successfully deleted")
+            start();
+        })
+    })
+  }
 
 deleteJob = () => {
     inquirer.prompt([
@@ -286,7 +297,23 @@ deleteJob = () => {
     })
   }
 
-//    deleteEmployee();
+deleteEmployee = () => {
+    inquirer.prompt([
+        {
+            type: "input",
+            name: "employeeDelete",
+            message: "which job role would you like to delte?"
+        },
+
+    ]).then(function(res) {
+        connection.query("DELETE FROM employee WHERE first_name = (?)", 
+        [res.employeeDelete], function (err, data) {
+            console.table(data);
+            console.log("employee successfully deleted")
+            start();
+        })
+    })
+  }
 
 //     viewBudget()
 
